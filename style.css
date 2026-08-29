@@ -1,0 +1,780 @@
+/* ==========================================================================
+   1. IMPORTAÇÃO DE FONTES & RESETS
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'League Spartan', sans-serif;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO (NAVBAR COM EFEITO BLUR)
+   ========================================================================== */
+.navbar {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 10px 5%;
+    transition: background-color 0.3s ease;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 30px;
+    flex: 1;
+}
+
+.nav-left {
+    justify-content: flex-end;
+}
+
+.nav-right {
+    justify-content: flex-start;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #3b4252;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: lowercase;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    padding-bottom: 2px;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: #2563eb;
+    border-bottom: 2px solid #2563eb;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    margin: 0 40px;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.brand-name {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #1e3a8a;
+    letter-spacing: -1px;
+}
+
+/* ==========================================================================
+   3. ÁREA PRINCIPAL & FUNDO GRADIENTE
+   ========================================================================== */
+.main-content {
+    margin-top: 60px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 3% 60px;
+    background: linear-gradient(135deg, #2b4c7e 0%, #3a71ca 35%, #63a3d8 70%, #d8e5ed 100%);
+    background-attachment: fixed;
+    gap: 60px;
+}
+
+/* ==========================================================================
+   4. SEÇÃO DO BANNER (AMPLO E COM DOTS)
+   ========================================================================== */
+.hero-banner {
+    width: 100%;
+    max-width: 1350px;
+}
+
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-track-wrapper {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    position: relative;
+}
+
+.slide-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+}
+
+.slide-link:hover img {
+    transform: scale(1.015);
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+    padding: 40px 30px 35px;
+    text-align: left;
+}
+
+.slide-caption h3 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.slide-caption p {
+    font-size: 1.2rem;
+    color: #e2e8f0;
+}
+
+/* Setas do Carrossel */
+.carousel-arrow {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-size: 1.4rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+}
+
+.carousel-arrow:hover {
+    background: #ffffff;
+    color: #1e3a8a;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-arrow {
+    left: 15px;
+}
+
+.next-arrow {
+    right: 15px;
+}
+
+/* Pontinhos Indicadores (Dots) */
+.carousel-dots {
+    position: absolute;
+    bottom: 12px;
+    display: flex;
+    gap: 10px;
+    z-index: 15;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background-color: #ffffff;
+    width: 28px;
+    border-radius: 10px;
+}
+
+/* ==========================================================================
+   5. SEÇÃO DE JOGOS
+   ========================================================================== */
+.games-section {
+    width: 100%;
+    max-width: 1350px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: #ffffff;
+    text-transform: lowercase;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.game-card {
+    background: rgba(255, 255, 255, 0.95);
+    color: #1e293b;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.game-thumb {
+    width: 100%;
+    height: 180px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.game-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.game-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 8px;
+}
+
+.game-card p {
+    font-size: 1rem;
+    color: #475569;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   6. SEÇÃO DA LOJA & VITRINE
+   ========================================================================== */
+.shop-section {
+    width: 100%;
+    max-width: 1350px;
+}
+
+.shop-card {
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.shop-card h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.shop-subtitle {
+    font-size: 1.15rem;
+    color: #94a3b8;
+    margin-bottom: 30px;
+}
+
+.store-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.product-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 16px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.product-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    z-index: 2;
+}
+
+.product-img {
+    width: 100%;
+    height: 160px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.product-info h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.product-desc {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    flex: 1;
+}
+
+.product-price {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #60a5fa;
+}
+
+.more-items-notice {
+    font-size: 1.2rem;
+    color: #e2e8f0;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.more-items-notice strong {
+    color: #60a5fa;
+}
+
+.btn-pill {
+    display: inline-block;
+    background: #ffffff;
+    color: #1e3a8a;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 14px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    text-transform: lowercase;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+}
+
+.btn-pill:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    background-color: #f8fafc;
+    color: #2563eb;
+}
+
+/* Aviso / Disclaimer abaixo do botão */
+.shop-disclaimer {
+    display: block;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-top: 18px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+/* ==========================================================================
+   7. ABA NOVA ERA
+   ========================================================================== */
+.nova-era-section {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-card {
+    background: rgba(255, 255, 255, 0.95);
+    color: #1e293b;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 850px;
+}
+
+.page-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+    text-transform: lowercase;
+}
+
+.about-text {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    font-weight: 500;
+    color: #334155;
+    margin-bottom: 25px;
+}
+
+.signature {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2563eb;
+    text-align: right;
+}
+
+.timeline-wrapper {
+    width: 100%;
+    text-align: center;
+}
+
+.timeline-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 35px;
+    color: #ffffff;
+    text-transform: lowercase;
+}
+
+.timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+}
+
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.timeline-point {
+    width: 38px;
+    height: 38px;
+    background-color: #ffffff;
+    color: #1e3a8a;
+    font-weight: 800;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.image-box {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.image-box:hover {
+    transform: translateY(-5px);
+    border-color: #ffffff;
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.timeline-label {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   8. RODAPÉ & RESPONSIVIDADE
+   ========================================================================== */
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background-color: #070c1a;
+    color: #94a3b8;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-menu {
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .brand-logo {
+        order: -1;
+        margin: 0;
+    }
+
+    .main-content {
+        margin-top: 140px;
+    }
+
+    .carousel-slide img {
+        height: 280px;
+    }
+
+    .shop-card {
+        padding: 25px 15px;
+    }
+
+    .shop-card h2 {
+        font-size: 1.7rem;
+    }
+}
+
+/* ==========================================================================
+   ESTILOS DA PÁGINA DE DETALHES DO PROJETO / MAPA
+   ========================================================================== */
+
+/* Hero e Título */
+.project-hero {
+    width: 100%;
+    max-width: 1350px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.project-header {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.project-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -1px;
+}
+
+.project-tags {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.tag {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #e2e8f0;
+}
+
+/* Card de Descrição */
+.project-details-section {
+    width: 100%;
+    max-width: 1350px;
+}
+
+.details-card {
+    background: rgba(255, 255, 255, 0.95);
+    color: #1e293b;
+    border-radius: 20px;
+    padding: 35px 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.details-card h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+.details-card p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #334155;
+    margin-bottom: 15px;
+}
+
+.details-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* Trilho / Carrossel Estilo Netflix */
+.netflix-section {
+    width: 100%;
+    max-width: 1350px;
+}
+
+.netflix-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.netflix-slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 15px;
+    scroll-behavior: smooth;
+}
+
+/* Barra de rolagem estilizada para o trilho Netflix */
+.netflix-slider::-webkit-scrollbar {
+    height: 8px;
+}
+
+.netflix-slider::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.netflix-slider::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+}
+
+.netflix-card {
+    min-width: 280px;
+    max-width: 280px;
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.netflix-card:hover {
+    transform: scale(1.04);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.netflix-thumb {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+}
+
+.netflix-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.netflix-info {
+    padding: 15px;
+}
+
+.netflix-info h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.netflix-info p {
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
